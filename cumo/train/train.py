@@ -1004,6 +1004,11 @@ def train(attn_implementation=None):
             model_args=model_args,
             fsdp=training_args.fsdp
         )
+
+        print('-'*100)
+        print('-'*40+'Model After Initializing vision Module'+'-'*40)
+        print(model)
+        print('-'*100)
         
         vision_tower = model.get_vision_tower()
         vision_tower.to(dtype=torch.bfloat16 if training_args.bf16 else torch.float16, device=training_args.device)
