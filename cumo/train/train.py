@@ -931,6 +931,11 @@ def train(attn_implementation=None):
                 output.requires_grad_(True)
             model.get_input_embeddings().register_forward_hook(make_inputs_require_grad)
 
+    print('-'*100)
+    print('-'*40+'Model Before Adding Lora adapter'+'-'*40)
+    print(model)
+    print('-'*100)
+
     if training_args.lora_enable:
         from peft import LoraConfig, get_peft_model
         lora_config = LoraConfig(
